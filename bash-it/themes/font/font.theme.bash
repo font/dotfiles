@@ -11,6 +11,7 @@ SCM_THEME_PROMPT_SUFFIX="${green}|"
 #SCM_GIT_IGNORE_UNTRACKED=true
 #SCM_GIT_SHOW_DETAILS=false
 #SCM_GIT_SHOW_REMOTE_INFO=false
+SCM_GIT_SHOW_MINIMAL_INFO=true
 
 #GIT_THEME_PROMPT_DIRTY="${bold_blue}) ${bold_yellow}✗"
 #GIT_THEME_PROMPT_CLEAN=" ${bold_green}✓"
@@ -43,11 +44,8 @@ function prompt_command() {
         ret_status="${bold_red}"
     fi
 
-    # Add new function git_prompt_status to just give basic status info from oh-my-zsh
-    #PS1="$(clock_prompt)${virtualenv}${hostname} ${ret_status}→ ${bold_cyan}\W$(scm_prompt_info) ${reset_color}"
-    #PS1="$(clock_prompt)${virtualenv}${hostname} ${ret_status}→ ${bold_cyan}\W$(scm_prompt_status) ${normal}"
-    # Ideal setup
-    PS1="$(clock_prompt)${virtualenv}${hostname} ${bold_cyan}\W $(scm_char)$(scm_prompt_status)${ret_status}→ ${normal}"
+    #PS1="$(clock_prompt)${virtualenv}${hostname} ${bold_cyan}\W $(scm_char)$(git_prompt_minimal_info)${ret_status}→ ${normal}"
+    PS1="$(clock_prompt)${virtualenv}${hostname} ${bold_cyan}\W $(scm_char)$(scm_prompt_info)${ret_status}→ ${normal}"
 }
 
 safe_append_prompt_command prompt_command

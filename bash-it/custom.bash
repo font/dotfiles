@@ -2,6 +2,9 @@
 
 # User specific settings
 
+# Set local to US UTF-8 characters for bash-it and some themes
+export LC_ALL=en_US.UTF-8
+
 # If set to ‘on’, words which have more than one possible completion
 # cause the matches to be listed immediately instead of ringing the
 # bell. The default value is ‘off’.
