@@ -1,51 +1,62 @@
 #!/usr/bin/env bash
+#
+# One line prompt showing the following configurableinformation
+# for git:
+# time (virtual_env) username@hostname pwd git_char|git_branch git_dirty_status|→
+#
+# The → arrow shows the exit status of the last command:
+# - bold green: 0 exit status
+# - bold red: non-zero exit status
+#
+# Example outside git repo:
+# 07:45:05 user@host ~ →
+#
+# Example inside clean git repo:
+# 07:45:05 user@host .bash_it ±|master|→
+#
+# Example inside dirty git repo:
+# 07:45:05 user@host .bash_it ±|master ✗|→
+#
+# Example with virtual environment:
+# 07:45:05 (venv) user@host ~ →
+#
 
-SCM_CHECK=true
 SCM_NONE_CHAR=''
-
 SCM_THEME_PROMPT_DIRTY=" ${red}✗"
-#SCM_THEME_PROMPT_CLEAN=" ${bold_green}✓"
 SCM_THEME_PROMPT_CLEAN=""
 SCM_THEME_PROMPT_PREFIX="${green}|"
 SCM_THEME_PROMPT_SUFFIX="${green}|"
-#SCM_GIT_IGNORE_UNTRACKED=true
-#SCM_GIT_SHOW_DETAILS=false
-#SCM_GIT_SHOW_REMOTE_INFO=false
 SCM_GIT_SHOW_MINIMAL_INFO=true
-
-#GIT_THEME_PROMPT_DIRTY="${bold_blue}) ${bold_yellow}✗"
-#GIT_THEME_PROMPT_CLEAN=" ${bold_green}✓"
-#GIT_THEME_PROMPT_CLEAN="${bold_blue})"
-#GIT_THEME_PROMPT_PREFIX=" ${green}|"
-#GIT_THEME_PROMPT_SUFFIX="${green}|"
-#GIT_THEME_PROMPT_PREFIX=" ${bold_blue}git:(${bold_red}"
-#GIT_THEME_PROMPT_SUFFIX="${normal}"
 
 CLOCK_THEME_PROMPT_PREFIX=''
 CLOCK_THEME_PROMPT_SUFFIX=' '
 THEME_SHOW_CLOCK=true
-THEME_SHOW_CLOCK_CHAR=false
-THEME_CLOCK_CHAR_COLOR=${THEME_CLOCK_CHAR_COLOR:-"$red"}
-THEME_CLOCK_COLOR=${THEME_CLOCK_COLOR:-"$bold_cyan"}
+THEME_CLOCK_COLOR=${THEME_CLOCK_COLOR:-"$bold_blue"}
 THEME_CLOCK_FORMAT=${THEME_CLOCK_FORMAT:-"%I:%M:%S"}
 
 VIRTUALENV_THEME_PROMPT_PREFIX='('
 VIRTUALENV_THEME_PROMPT_SUFFIX=') '
 
 function prompt_command() {
-    local RC="$?" # This needs to be first to save last command return code
+    # This needs to be first to save last command return code
+    local RC="$?"
 
     hostname="${bold_black}\u@\h"
     virtualenv="${white}$(virtualenv_prompt)"
 
+    # Set return status color
     if [[ ${RC} == 0 ]]; then
         ret_status="${bold_green}"
     else
         ret_status="${bold_red}"
     fi
 
-    #PS1="$(clock_prompt)${virtualenv}${hostname} ${bold_cyan}\W $(scm_char)$(git_prompt_minimal_info)${ret_status}→ ${normal}"
-    PS1="$(clock_prompt)${virtualenv}${hostname} ${bold_cyan}\W $(scm_char)$(scm_prompt_info)${ret_status}→ ${normal}"
+    # Append new history lines to history file
+    history -a
+
+    PS1="$(clock_prompt)${virtualenv}${hostname} ${bold_cyan}\W $(scm_prompt_char_info)${ret_status}→ ${normal}"
+    #PS1="$(clock_prompt)${virtualenv}${hostname} ${bold_cyan}\W $(scm_char)$(scm_prompt_info)${ret_status}→ ${normal}"
 }
 
+unset PROMPT_COMMAND
 safe_append_prompt_command prompt_command
