@@ -47,9 +47,7 @@ function prompt_command() {
     # Append new history lines to history file
     history -a
 
-    #PS1="${virtualenv}${bold_cyan}\W $(scm_prompt_char_info)${ret_status}→ ${normal}"
-    PS1="${virtualenv}${bold_cyan}\W $(scm_char)$(scm_prompt_info)${ret_status}→ ${normal}"
+    PS1="${virtualenv}${bold_cyan}\W $(scm_prompt_char_info)${ret_status}→ ${normal}"
 }
 
-unset PROMPT_COMMAND
 safe_append_prompt_command prompt_command
