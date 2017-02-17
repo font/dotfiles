@@ -1,0 +1,156 @@
+" To make a vimrc file while in vim use :mkvimrc
+
+if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
+    set fileencodings=utf-8,latin1
+endif
+
+colorscheme default         " Favorite colorscheme, Necessary on Fedora
+syntax on
+set nocompatible            " Use Vim defaults (much better!)
+"set bs=indent,eol,start    " allow backspacing over everything in insert mode
+
+" Vim history settings
+"set backup                 " keep a backup file
+set viminfo='20,\"50        " read/write a .viminfo file
+                            " don't store more than 50 lines of registers
+set history=50              " keep 50 lines of command line history
+
+" Switch on line number display
+set number
+
+" Switch off fold column left over from vimdiff
+set foldcolumn=0
+
+" Turn off vimdiff mode
+diffoff
+
+" Turn off scrollbind
+set noscrollbind
+
+" When editing a file, always jump to the last cursor position
+autocmd BufReadPost *
+\ if line("'\"") > 0 && line ("'\"") <= line("$") |
+\   exe "normal! g'\"" |
+\ endif
+
+" show the cursor position all the time
+set ruler
+
+" Tab settings
+set autoindent              " indents automatically when adding a new line
+set tabstop=4               " tabbing occupies 4 spaces
+set shiftwidth=4            " space count to shift the current line with <</>>
+set expandtab               " convert tabs to the equivalent number of blanks
+autocmd BufRead *.txt set tw=78 " In text files, always limit the width of text to 78 characters
+
+" Command bar settings
+set showcmd
+
+" Search settings
+" set magic
+set hlsearch                " highlight searching
+set ignorecase              " the opposite is set noignorecase
+set nowrapscan              " the opposite is 'set wrapscan' while searching for strings
+set smartcase               " Case sensitive search when pattern contains uppercase letter
+set incsearch               " Move cursor to matched string while typing search pattern
+
+" Set visual bell
+set visualbell
+
+" Parens matching
+set showmatch               " Parens matching
+set matchtime=5             " How long to wait before disabling parens matching
+
+" Wild menu
+set wildmenu
+set wildmode=list:longest,full
+set wildignore=*.o,*~,*.pyc
+
+" Enable mouse usage
+set mouse=a
+" Set xterm2 mouse mode to allow resizing of splits with mouse inside Tmux.
+set ttymouse=xterm2
+
+
+" Folding settings
+set foldmethod=manual
+" Save and restore folds when a file is closed and re-opened
+autocmd BufWinLeave ?* mkview
+autocmd BufWinEnter ?* silent loadview
+" Remap folding to Space
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
+
+" Highlight cursor line
+"autocmd WinLeave * set nocursorline nocursorcolumn
+"autocmd WinEnter * set cursorline cursorcolumn
+"set cursorline cursorcolumn
+"highlight CursorLine cterm=NONE ctermbg=lightgray
+
+" Highlighting extra whitespace
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+" Show trailing whitespace and spaces before a tab:
+"autocmd BufWinEnter * match ExtraWhitespace /\s\+$\| \+\ze\t/
+" Show tabs that are not at the start of a line:
+"autocmd BufWinEnter * match ExtraWhitespace /[^\t]\zs\t\+/
+" Show spaces used for indenting (so you use only tabs for indenting).
+"autocmd BufWinEnter * match ExtraWhitespace /^\t*\zs \+/
+
+" Turn off auto-indentation when pasting with F5.
+nnoremap <F5> :set invpaste paste?<Enter>
+imap <F5> <C-O><F5>
+set pastetoggle=<F5>
+
+" Plugins
+nmap <F7> :TlistToggle<CR>
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
+" Only do this part when compiled with support for autocommands
+"if has("autocmd")
+"endif
+
+" For languages like perl
+if filereadable("ptags")
+    set tags=ptags
+endif
+
+" gVim specific settings
+if has("gui_running")
+    syntax on
+    colors koehler
+    set hlsearch
+    set guioptions=egmrLt
+    set guifont=Monospace\ 11
+endif
+
+filetype plugin on
+
+"
+" vim-plug configuration
+"
+" auto-install vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
+
+call plug#begin('~/.vim/plugged')
+
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" ViM syntax plugin
+Plug 'pearofducks/ansible-vim'
+
+" Add plugins to &runtimepath
+call plug#end()
+
+" NERDTreeToggle shortcut for ctrl-n
+map <C-n> :NERDTreeToggle<CR>
