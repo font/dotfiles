@@ -26,3 +26,10 @@ fi
 
 # Disable scroll lock so as not be disturbed by ctrl-S ctrl-Q in terminals:
 stty -ixon
+
+# Functions
+function docker-remove-stale-assets() {
+  docker ps --filter status=exited -q | xargs docker rm --volumes
+  docker images --filter dangling=true -q | xargs docker rmi
+}
+
