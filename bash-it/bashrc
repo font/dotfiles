@@ -77,3 +77,12 @@ fi
 if [ -f /usr/bin/aws_completer ]; then
   complete -C "/usr/bin/aws_completer" aws
 fi
+
+# Go
+if which go &> /dev/null; then
+    export GOPATH=$(go env GOPATH)
+fi
+
+# Update PATH for MS Azure
+export PATH=$PATH:/home/ifont/azure-cli/bin
+source '/home/ifont/azure-cli/az.completion'
