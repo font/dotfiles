@@ -1,0 +1,5 @@
+new-session -s rhcs -n rhcs;
+new-window -n mon ;
+new-window -n osd0 ;
+new-window -n osd1 ;
+new-window -n osd2 ;
