@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 # User specific settings
+if [[ -v DEMO_SESSION ]]; then
+    export THEME_SHOW_CLOCK=false
+    export SCM_CHECK=false
+    export THEME_SHOW_USER_HOST=false
+fi
 
 # Set local to US UTF-8 characters for bash-it and some themes
 export LC_ALL=en_US.UTF-8
