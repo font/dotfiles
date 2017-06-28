@@ -143,6 +143,9 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+" EditorConfig Vim Plugin
+Plug 'editorconfig/editorconfig-vim'
+
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
