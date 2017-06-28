@@ -32,6 +32,10 @@ fi
 # Disable scroll lock so as not be disturbed by ctrl-S ctrl-Q in terminals:
 stty -ixon
 
+# Replace directory names with the results of word expansion when performing
+# filename completion
+shopt -s direxpand
+
 # Functions
 function docker-remove-stale-assets() {
   docker ps --filter status=exited -q | xargs docker rm --volumes
