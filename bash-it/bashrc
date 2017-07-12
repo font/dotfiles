@@ -62,3 +62,16 @@ source $BASH_IT/bash_it.sh
 if [ -f /home/${USER}/.bash_priv_rc ]; then
     source "/home/${USER}/.bash_priv_rc"
 fi
+
+# Enables shell command completion for gcloud.
+if [ -f /home/${USER}/google-cloud-sdk/completion.bash.inc ]; then
+  source "/home/${USER}/google-cloud-sdk/completion.bash.inc"
+fi
+
+# Enables AWS command completion
+if [ -f /usr/bin/aws_completer ]; then
+  complete -C "/usr/bin/aws_completer" aws
+fi
+
+# Enables Azure command completion
+source '/home/ifont/azure-cli/az.completion'

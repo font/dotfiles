@@ -12,23 +12,10 @@ if [ -f /home/${USER}/google-cloud-sdk/path.bash.inc ]; then
   source "/home/${USER}/google-cloud-sdk/path.bash.inc"
 fi
 
-# Enables shell command completion for gcloud.
-if [ -f /home/${USER}/google-cloud-sdk/completion.bash.inc ]; then
-  source "/home/${USER}/google-cloud-sdk/completion.bash.inc"
-fi
-
-# Enables AWS command completion
-if [ -f /usr/bin/aws_completer ]; then
-  complete -C "/usr/bin/aws_completer" aws
-fi
-
 # Updates PATH for MS Azure
 PATH=${PATH}:/home/ifont/azure-cli/bin
 
-# Enables Azure command completion
-source '/home/ifont/azure-cli/az.completion'
-
-# Go paths
+# Update paths for Go
 PATH=/usr/local/go/bin:${PATH}
 if which go &> /dev/null; then
     export GOPATH=$(go env GOPATH)
@@ -36,4 +23,3 @@ fi
 
 # Adds home bin to PATH and export
 export PATH=${HOME}/bin:${PATH}
-
