@@ -41,7 +41,6 @@ set autoindent              " indents automatically when adding a new line
 set tabstop=4               " tabbing occupies 4 spaces
 set shiftwidth=4            " space count to shift the current line with <</>>
 set expandtab               " convert tabs to the equivalent number of blanks
-autocmd BufRead *.txt set tw=78 " In text files, always limit the width of text to 78 characters
 
 " Command bar settings
 set showcmd
@@ -70,7 +69,6 @@ set wildignore=*.o,*~,*.pyc
 set mouse=a
 " Set xterm2 mouse mode to allow resizing of splits with mouse inside Tmux.
 set ttymouse=xterm2
-
 
 " Folding settings
 set foldmethod=manual
