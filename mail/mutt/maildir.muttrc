@@ -1,0 +1,8 @@
+# IMAP: offlineimap
+set mbox_type   = Maildir               # mailbox type
+set folder      = ~/.mail/Work        # mailbox location
+set spoolfile   = ~/.mail/Work/INBOX  # folder for Inbox
+set postponed   = ~/.mail/Work/Drafts # folder for Drafts
+#set trash      = ~/.mail/Work/Trash  # folder for Trash
+mailboxes       +../temporary/search    # notmuch search results
+source ~/.mutt/mailboxes                # Mailboxes to show in sidebar

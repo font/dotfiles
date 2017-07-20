@@ -1,0 +1,115 @@
+# muttrc -----------------------------------------
+set ssl_starttls  = yes             # use STARTTLS on servers advertising capability
+set ssl_force_tls = yes             # require all connections to remote servers be encrypted
+set realname      = "Ivan Font"     # Who am I?
+#set signature    = ~/.mutt/sig     # my signature file
+unset move                          # gmail does that
+
+# character set on messages that we send
+set send_charset="utf-8"
+
+# make sure Vim knows mutt is a mail client and that we compose an UTF-8
+# encoded message. Also add spell check to the mix
+set editor="vim -c 'set syntax=mail ft=mail enc=utf-8 spell spelllang=en'"
+
+# Allow line breaks with trailing whitespace to continue paragraph and
+# not hard break
+set text_flowed = yes
+
+# make default search pattern to search in To, Cc and Subject
+set simple_search = "~f %s | ~C %s | ~s %s"
+
+# Avoid marking mail as old
+set mark_old = no           # read/new is good enough
+#set auto_tag = yes         # apply function to all tagged messages
+set recall = no             # Avoid asking to recall postponed message
+
+# Threads ----------------------------------------
+set sort                = threads                    # like gmail
+set sort_aux            = reverse-last-date-received # like gmail
+set strict_threads      = yes                        # sort by “In-Reply-To” and “References:” fields
+unset collapse_unread                                # don't collapse on an unread message
+
+# Header Options ---------------------------------
+ignore          *                                 # ignore all headers
+unignore        From To Cc Bcc Date Subject       # show only these headers
+unhdr_order     *                                 # clear any ordering
+hdr_order       From: To: Cc: Bcc: Date: Subject: # and in this order
+
+# Mutt Cache Files -------------------------------
+set header_cache     = ~/.mutt/cache/headers  # where to store headers
+set message_cachedir = ~/.mutt/cache/bodies   # where to store bodies
+set certificate_file = ~/.mutt/certificates   # where to store certs
+set tmpdir           = ~/.mutt/temp           # where to keep temp files
+
+# Compose View Options ---------------------------
+set edit_headers      # show headers when composing
+set fast_reply        # skip to compose when replying
+set include           # include message in replies
+set forward_quote     # include message in forwards
+
+# Viewing HTML -----------------------------------
+set mailcap_path 	= ~/.mutt/mailcap       # display MIME bodies not directly supported by Mutt.
+auto_view           text/html               # for viewing in pager
+alternative_order   text/plain text/html    # priority for handling content
+
+# Pager View Options -----------------------------
+set pager_index_lines = 10 # number of index lines to show
+set pager_context = 3      # number of context lines to show
+set pager_stop             # don't go to next message automatically
+set menu_scroll            # scroll in menus
+set tilde                  # show tildes like in vim
+unset markers              # no ugly plus signs
+
+# GooBook Contacts -------------------------------
+set query_command = "goobook query '%s'"
+
+# Index Key Bindings ----------------------------
+bind index <space>  collapse-thread
+bind index -        collapse-all
+bind index gg       first-entry
+bind index G        last-entry
+bind index R        group-reply
+bind index p        recall-message
+bind index N        search-opposite
+
+# Pager Key Bindings -----------------------------
+bind pager k    previous-line
+bind pager j    next-line
+bind pager gg   top
+bind pager G    bottom
+bind pager R    group-reply
+bind pager N    search-opposite
+bind pager U    mark-as-new
+
+# Attachment Key Bindings ------------------------
+bind attach <return> view-mailcap
+
+# Editor Key Bindings ----------------------------
+bind editor <space> noop
+bind editor <tab> complete-query
+
+# Compose Key Bindings ---------------------------
+bind compose p postpone-message
+
+# Macros -----------------------------------------
+macro index,pager y "<save-message>=All Mail<enter><enter>" "Archive"
+macro index,pager d "<save-message>=Trash<enter><enter>" "Trash"
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index ga "<change-folder>=All Mail<enter>" "Go to all mail"
+macro index gs "<change-folder>=Starred<enter>" "Go to starred messages"
+macro index gd "<change-folder>=Drafts<enter>" "Go to drafts"
+macro pager \cu <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+macro index A \
+    "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
+    "mark all new as read"
+macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
+macro index a "<limit>all\n" "show all messages (undo limit)"
+macro index S \
+    "<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch.py ~/.mail/temporary/search<enter><change-folder-readonly>+temporary/search<enter>" \
+    "search mail (using notmuch)"
+
+# Source Files ---------------------------------------
+source ~/.mutt/sidebar.muttrc       # Sidebar settings
+source ~/.mutt/maildir.muttrc       # Maildir settings
+source ~/.mutt/gmail-smtp.muttrc    # SMTP settings
