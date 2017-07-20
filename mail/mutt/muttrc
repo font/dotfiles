@@ -51,7 +51,7 @@ set forward_quote     # include message in forwards
 # Viewing HTML -----------------------------------
 set mailcap_path 	= ~/.mutt/mailcap       # display MIME bodies not directly supported by Mutt.
 auto_view           text/html               # for viewing in pager
-alternative_order   text/plain text/html    # priority for handling content
+alternative_order   text/plain text/enriched text/html  # priority for handling content
 
 # Pager View Options -----------------------------
 set pager_index_lines = 10 # number of index lines to show

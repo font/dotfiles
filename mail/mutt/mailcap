@@ -8,4 +8,6 @@ application/pdf; /usr/bin/xdg-open %s
 application/postscript ; /usr/bin/xdg-open %s
 
 text/calendar; /usr/bin/gcalcli -d import; needsterminal;
+
+text/html; /usr/bin/google-chrome %s; test=test -n "$DISPLAY"; nametemplate=%s.html
 text/html; elinks -dump ; copiousoutput;
