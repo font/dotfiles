@@ -558,6 +558,8 @@ localfolders = ~/.mail/Work
 #customflag_d = ToDo
 
 # Remove GMAIL prefix on Google-specific IMAP folders that are pulled down.
+# You can also disable these labels/folders from showing in IMAP using the
+# Gmail web client settings.
 nametrans = lambda f: '[Gmail]/' + f if f in ['Drafts', 'Starred', 'Important', 'Spam', 'Trash', 'All Mail', 'Sent Mail'] else f
 
 [Repository remote-Work]
