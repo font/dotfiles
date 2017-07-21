@@ -3,5 +3,8 @@
 " option.
 setlocal formatoptions+=aw
 
+:highlight clear SpellBad               " Clear spelling error highlight
+:highlight SpellBad cterm=underline     " Set spelling error highilght
+
 " Disable trailing whitespace highlighting
 ":highlight clear ExtraWhitespace

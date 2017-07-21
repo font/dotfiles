@@ -30,7 +30,7 @@ set forward_quote               # include message in forwards
 set send_charset    = "utf-8"   # character set on messages that we send
 set recall          = no        # Avoid asking to recall postponed message
 set text_flowed     = yes       # Avoid hard line breaks by allowing trailing whitespace to continue paragraph
-# make sure Vim knows mutt is a mail client and that we compose an UTF-8
+# make sure Vim knows mutt is a mail client and that we compose a UTF-8
 # encoded message. Also add spell check to the mix
 set editor="vim -c 'set syntax=mail ft=mail enc=utf-8 spell spelllang=en'"
 
