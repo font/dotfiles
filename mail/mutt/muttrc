@@ -74,7 +74,7 @@ bind index G            last-entry
 bind index R            group-reply
 bind index N            search-opposite
 bind index U            toggle-new
-bind index <shift><tab> previous-new-then-unread
+bind index <backtab>    previous-new-then-unread
 
 # Pager Key Bindings -----------------------------
 bind pager k            previous-line
@@ -84,7 +84,7 @@ bind pager G            bottom
 bind pager R            group-reply
 bind pager N            search-opposite
 bind pager U            mark-as-new
-bind pager <shift><tab> previous-new-then-unread
+bind pager <backtab>    previous-new-then-unread
 
 # Attachment Key Bindings ------------------------
 bind attach <return> view-mailcap
