@@ -97,11 +97,8 @@ bind editor <tab> complete-query
 bind compose p postpone-message
 
 # Macros -----------------------------------------
-macro index,pager y "<save-message>=All Mail<enter><enter>" "Archive"
 macro index,pager d "<save-message>=Trash<enter><enter>" "Trash"
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
-macro index ga "<change-folder>=All Mail<enter>" "Go to all mail"
-macro index gs "<change-folder>=Starred<enter>" "Go to starred messages"
 macro index gd "<change-folder>=Drafts<enter>" "Go to drafts"
 macro pager \cu <pipe-entry>'urlview'<enter> 'Follow links with urlview'
 macro index A \
