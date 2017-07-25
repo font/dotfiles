@@ -53,8 +53,8 @@ set nowrapscan              " the opposite is 'set wrapscan' while searching for
 set smartcase               " Case sensitive search when pattern contains uppercase letter
 set incsearch               " Move cursor to matched string while typing search pattern
 
-" Set visual bell
-set visualbell
+
+"set visualbell              " Set visual bell
 
 " Parens matching
 set showmatch               " Parens matching
