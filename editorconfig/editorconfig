@@ -36,3 +36,6 @@ indent_size = 2
 
 [*.txt]
 indent_size = 2
+
+[mutt-*]
+trim_trailing_whitespace = false
