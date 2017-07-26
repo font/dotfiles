@@ -1,6 +1,8 @@
 audio/*; /usr/bin/xdg-open %s
 
-image/*; /usr/bin/xdg-open %s
+# https://bugzilla.redhat.com/show_bug.cgi?id=653249
+#image/*; /usr/bin/xdg-open %s
+image/*; XDG_CURRENT_DESKTOP=X-Generic /usr/bin/xdg-open %s
 
 application/ics; /usr/bin/gcalcli -d import; needsterminal;
 application/msword; /usr/bin/xdg-open %s
