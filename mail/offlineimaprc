@@ -1033,12 +1033,13 @@ nametrans = lambda f: f.replace('[Gmail]/', '') if f.startswith('[Gmail]/') else
 # Example 2: synchronizing everything except Trash.
 #
 #folderfilter = lambda foldername: foldername not in ['Trash']
-folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam']
+#folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam']
 #
 # Example 3: Using a regular expression to exclude Trash and all folders
 # containing the characters "Del".
 #
 #folderfilter = lambda foldername: not re.search('(^Trash$|Del)', foldername)
+folderfilter = lambda foldername: not re.search('^\[Gmail\]/Spam$', foldername)
 #
 # If folderfilter is not specified, ALL remote folders will be synchronized.
 #
