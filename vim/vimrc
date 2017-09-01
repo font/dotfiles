@@ -13,6 +13,7 @@ set nocompatible            " Use Vim defaults (much better!)
 "set backup                 " keep a backup file
 set viminfo='20,\"50        " read/write a .viminfo file
                             " don't store more than 50 lines of registers
+set autoread                " Automatically read changed files
 set history=50              " keep 50 lines of command line history
 
 " Switch on line number display
@@ -36,6 +37,9 @@ autocmd BufReadPost *
 " show the cursor position all the time
 set ruler
 
+" Split settings
+set splitright              " Vertical windows should be split to right
+
 " Tab settings
 set autoindent              " indents automatically when adding a new line
 set tabstop=4               " tabbing occupies 4 spaces
@@ -44,6 +48,7 @@ set expandtab               " convert tabs to the equivalent number of blanks
 
 " Command bar settings
 set showcmd
+set laststatus=2            " Always show status line
 
 " Search settings
 " set magic
@@ -52,7 +57,6 @@ set ignorecase              " the opposite is set noignorecase
 set nowrapscan              " the opposite is 'set wrapscan' while searching for strings
 set smartcase               " Case sensitive search when pattern contains uppercase letter
 set incsearch               " Move cursor to matched string while typing search pattern
-
 
 "set visualbell              " Set visual bell
 
@@ -73,11 +77,46 @@ set ttymouse=xterm2
 " Folding settings
 set foldmethod=manual
 " Save and restore folds when a file is closed and re-opened
-autocmd BufWinLeave ?* mkview
-autocmd BufWinEnter ?* silent loadview
+let g:skipview_files = [
+            \ '[EXAMPLE PLUGIN BUFFER]'
+            \ ]
+function! MakeViewCheck()
+    if has('quickfix') && &buftype =~ 'nofile'
+        " Buffer is marked as not a file
+        return 0
+    endif
+    if empty(glob(expand('%:p')))
+        " File does not exist on disk
+        return 0
+    endif
+    if len($TEMP) && expand('%:p:h') == $TEMP
+        " We're in a temp dir
+        return 0
+    endif
+    if len($TMP) && expand('%:p:h') == $TMP
+        " Also in temp dir
+        return 0
+    endif
+    if index(g:skipview_files, expand('%')) >= 0
+        " File is in skip list
+        return 0
+    endif
+    return 1
+endfunction
+augroup vimrcAutoView
+    autocmd!
+    " Autosave & Load Views.
+    autocmd BufWinLeave ?* if MakeViewCheck() | mkview | endif
+    autocmd BufWinEnter ?* if MakeViewCheck() | silent loadview | endif
+augroup end
 " Remap folding to Space
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
+
+" Highlight searching
+highlight Search ctermbg=Yellow ctermfg=Black guibg=Yellow guifg=Black
+"highlight Search ctermbg=LightYellow ctermfg=Black guibg=LightYellow guifg=Black
+"highlight Search ctermbg=LightBlue ctermfg=Black guibg=LightBlue guifg=Black
 
 " Highlight cursor line
 "autocmd WinLeave * set nocursorline nocursorcolumn
@@ -110,10 +149,6 @@ nmap <F7> :TlistToggle<CR>
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
-" Only do this part when compiled with support for autocommands
-"if has("autocmd")
-"endif
-
 " For languages like perl
 if filereadable("ptags")
     set tags=ptags
@@ -141,8 +176,14 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+" ctrlp fuzzy finder
+Plug 'ctrlpvim/ctrlp.vim'
+
 " EditorConfig Vim Plugin
 Plug 'editorconfig/editorconfig-vim'
+
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoInstallBinaries' }
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
