@@ -16,10 +16,13 @@ fi
 PATH=${PATH}:/home/ifont/azure-cli/bin
 
 # Update paths for Go
-PATH=/usr/local/go/bin:${PATH}
+PATH=/usr/local/go/bin:/home/ifont/go/bin:${PATH}
 if which go &> /dev/null; then
     export GOPATH=$(go env GOPATH)
 fi
+
+# Update PATH for etcd
+PATH=${PATH}:/home/ifont/go/src/k8s.io/kubernetes/third_party/etcd
 
 # Adds home bin to PATH and export
 export PATH=${HOME}/bin:${PATH}
