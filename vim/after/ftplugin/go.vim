@@ -1,8 +1,12 @@
 " Set leader shortcut to a comma ','. By default it's the backslash
 "let mapleader = ','
 
+" Split settings
+set splitright              " Vertical windows should be split to right
+set splitbelow              " Horizontal windows should be split below
+
 " vim-go
-"let g:go_fmt_command = "goimports"
+let g:go_fmt_command = "goimports"
 let g:go_autodetect_gopath = 1
 let g:go_list_type = "quickfix"
 
