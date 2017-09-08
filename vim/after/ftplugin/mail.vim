@@ -3,6 +3,21 @@
 " option.
 setlocal formatoptions+=aw
 
+" NOTE:
+" Bulleted unordered lists considered comments (e.g. use of '-') will auto
+" indent to align with the words on the first line. This behavior is
+" controlled by the comments value 'fb:-' as shown here:
+" comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+" This is problematic when sending mail with mutt using a bulleted unordered
+" list (e.g. using a '-') on any line that line wraps, in combination with
+" text_flowed=true in mutt and the formatoptions set above for continuing new
+" lines by using a trailing whitespace. The result is an extra space between
+" words at the joining line boundaries. Instead, use ordered/numbered lists,
+" disable the comments 'fb:-' value to interpret the '-' as a comment, or
+" delete the trailing whitespace from the lines that line wrap effectively
+" enforcing a fixed formatting list which may look ugly on mobile devices or
+" small screens.
+
 :highlight clear SpellBad               " Clear spelling error highlight
 :highlight SpellBad cterm=underline     " Set spelling error highilght
 
