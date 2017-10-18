@@ -2,7 +2,6 @@
 "let mapleader = ','
 
 " Split settings
-set splitright              " Vertical windows should be split to right
 set splitbelow              " Horizontal windows should be split below
 
 " vim-go
