@@ -33,7 +33,7 @@ inoremap <C-g> <esc>:<C-u>GoDeclsDir<cr>
 nnoremap <C-s> :GoDescribe<cr>
 
 " Open :GoImplements with ctrl-i
-nnoremap <C-i> :GoImplements<cr>
+nnoremap <C-\>i :GoImplements<cr>
 
 " Show by default 4 spaces for a tab
 setlocal noexpandtab tabstop=4 shiftwidth=4
