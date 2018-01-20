@@ -1,6 +1,11 @@
 " Set leader shortcut to a comma ','. By default it's the backslash
 "let mapleader = ','
 
+" Increase maxmempattern to fix:
+" E363: pattern uses more memory than 'maxmempattern'
+" when opening large Go files.
+set maxmempattern=2000
+
 " Split settings
 set splitbelow              " Horizontal windows should be split below
 
