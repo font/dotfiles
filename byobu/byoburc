@@ -1,0 +1,2 @@
+# Disable terminal title: user@host (ipaddress) - byobu
+BYOBU_NO_TITLE=1
