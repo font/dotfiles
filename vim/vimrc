@@ -80,6 +80,7 @@ set foldmethod=manual
 let g:skipview_files = [
             \ '[EXAMPLE PLUGIN BUFFER]'
             \ ]
+" Helper function to autosave and load views
 function! MakeViewCheck()
     if has('quickfix') && &buftype =~ 'nofile'
         " Buffer is marked as not a file
@@ -190,6 +191,9 @@ Plug 'editorconfig/editorconfig-vim'
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" Using delve with Vim
+"Plug 'sebdah/vim-delve'
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoInstallBinaries' }
