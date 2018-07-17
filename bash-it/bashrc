@@ -75,3 +75,6 @@ fi
 
 # Enables Azure command completion
 source '/home/ifont/azure-cli/az.completion'
+
+# Enables minikube command completion
+source <(minikube completion bash)
