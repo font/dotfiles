@@ -15,11 +15,8 @@ fi
 # Updates PATH for MS Azure
 PATH=${PATH}:/home/ifont/azure-cli/bin
 
-# Update paths for Go
+# Update PATH for Go
 PATH=/usr/local/go/bin:/home/ifont/go/bin:${PATH}
-if which go &> /dev/null; then
-    export GOPATH=$(go env GOPATH)
-fi
 
 # Adds home bin to PATH and export
 export PATH=${HOME}/bin:${PATH}
