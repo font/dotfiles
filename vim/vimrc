@@ -139,10 +139,10 @@ autocmd BufWinLeave * call clearmatches()
 " Show spaces used for indenting (so you use only tabs for indenting).
 "autocmd BufWinEnter * match ExtraWhitespace /^\t*\zs \+/
 
-" Turn off auto-indentation when pasting with F5.
-nnoremap <F5> :set invpaste paste?<Enter>
-imap <F5> <C-O><F5>
+" Set paste key binding
 set pastetoggle=<F5>
+nnoremap <F5> :set invpaste paste?<Enter>
+"imap <F5> <C-O><F5>
 
 " Plugins
 nmap <F7> :TlistToggle<CR>
