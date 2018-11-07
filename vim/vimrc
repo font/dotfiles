@@ -196,6 +196,10 @@ Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoInstallBinaries' }
 " Git commands within vim
 Plug 'tpope/vim-fugitive'
 
+" Hub commands within vim and to be used with vim-fugitive e.g. Gbrowse. It
+" uses hub if installed rather than git.
+Plug 'tpope/vim-rhubarb'
+
 " Add plugins to &runtimepath
 call plug#end()
 
