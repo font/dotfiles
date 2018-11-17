@@ -118,6 +118,8 @@ vnoremap <Space> zf
 highlight Search ctermbg=Yellow ctermfg=Black guibg=Yellow guifg=Black
 "highlight Search ctermbg=LightYellow ctermfg=Black guibg=LightYellow guifg=Black
 "highlight Search ctermbg=LightBlue ctermfg=Black guibg=LightBlue guifg=Black
+" Search visually selected text with //
+vnoremap // y/<C-R>"<CR>
 
 " Highlight cursor line
 "autocmd WinLeave * set nocursorline nocursorcolumn
