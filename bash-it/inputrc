@@ -2,3 +2,8 @@
 # See https://bugzilla.redhat.com/show_bug.cgi?id=1648170
 set colored-stats
 set colored-completion-prefix
+
+# up to search backwards
+"\e[A":history-search-backward
+# down to search forwards
+"\e[B":history-search-forward
