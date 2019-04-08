@@ -78,3 +78,6 @@ source '/home/ifont/azure-cli/az.completion'
 
 # Enables minishift command completion
 source <(minishift completion bash)
+
+# Enables kubectl command completion
+source <(kubectl completion bash)
