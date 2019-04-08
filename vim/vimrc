@@ -159,6 +159,7 @@ if has("gui_running")
     set hlsearch
     set guioptions=egmrLt
     set guifont=Monospace\ 11
+    set belloff=all
 endif
 
 filetype plugin on
