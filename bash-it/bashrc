@@ -74,10 +74,18 @@ if [ -f /usr/bin/aws_completer ]; then
 fi
 
 # Enables Azure command completion
-source '/home/ifont/azure-cli/az.completion'
+if [ -f /home/${USER}/azure-cli/az.completion ]; then
+  source "/home/${USER}/azure-cli/az.completion"
+fi
 
 # Enables minishift command completion
-source <(minishift completion bash)
+if command -v minishift &>/dev/null
+then
+  source <(minishift completion bash)
+fi
 
 # Enables kubectl command completion
-source <(kubectl completion bash)
+if command -v kubectl &>/dev/null
+then
+  source <(kubectl completion bash)
+fi
