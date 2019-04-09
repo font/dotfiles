@@ -1,6 +1,8 @@
 [user]
 	name = Ivan Font
 	email = ifont@redhat.com
+[url "git@github.com:"]
+        insteadOf = https://github.com/
 [core]
 	editor = vim
 	excludesfile = /home/ifont/.gitignore_global
