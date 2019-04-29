@@ -27,9 +27,10 @@ export VAGRANT_DEFAULT_PROVIDER=libvirt
 # Support for X11-clipboard and resizing panes through tmux when using Fedora
 if [ -e /usr/bin/vimx ]; then
     alias vim='/usr/bin/vimx'
+    export EDITOR='vimx'
 fi
 
-# Disable scroll lock so as not be disturbed by ctrl-S ctrl-Q in terminals:
+# Disable scroll lock so as to not be disturbed by ctrl-S ctrl-Q in terminals:
 stty -ixon
 
 # Replace directory names with the results of word expansion when performing
@@ -41,4 +42,3 @@ function docker-remove-stale-assets() {
   docker ps --filter status=exited -q | xargs docker rm --volumes
   docker images --filter dangling=true -q | xargs docker rmi
 }
-
