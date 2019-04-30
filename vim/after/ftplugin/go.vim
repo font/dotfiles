@@ -9,6 +9,10 @@ set maxmempattern=2000
 " Split settings
 set splitbelow              " Horizontal windows should be split below
 
+" Write content of the file automatically to iterate more quicly when using
+" GoBuild
+set autowrite
+
 " vim-go
 let g:go_fmt_command = "goimports"
 let g:go_fmt_experimental = 1 " Preserves undo/redo buffer
