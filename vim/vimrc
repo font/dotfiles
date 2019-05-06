@@ -39,6 +39,7 @@ set ruler
 
 " Split settings
 set splitright              " Vertical windows should be split to right
+set diffopt+=vertical       " Diff split vertical
 
 " Tab settings
 set autoindent              " indents automatically when adding a new line
