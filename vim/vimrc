@@ -177,22 +177,22 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Ansible ViM syntax plugin
-Plug 'pearofducks/ansible-vim'
+Plug 'pearofducks/ansible-vim', { 'tag': '*' }
 
 " ctrlp fuzzy finder
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim', { 'tag': '*' }
 
 " ViM easy motion
-Plug 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion', { 'tag': '*' }
 
 " EditorConfig Vim Plugin
-Plug 'editorconfig/editorconfig-vim'
+"Plug 'editorconfig/editorconfig-vim', { 'tag': '*' }
 
 " On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'tag': '*', 'on':  'NERDTreeToggle' }
 
 " Using delve with Vim
-"Plug 'sebdah/vim-delve'
+"Plug 'sebdah/vim-delve', { 'tag': '*' }
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoInstallBinaries' }
@@ -201,7 +201,8 @@ Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoInstallBinaries' }
 Plug 'tpope/vim-fugitive'
 
 " Hub commands within vim and to be used with vim-fugitive e.g. Gbrowse. It
-" uses hub if installed rather than git.
+" uses hub if installed rather than git. No official releases as of this
+" comment.
 Plug 'tpope/vim-rhubarb'
 
 " Add plugins to &runtimepath
