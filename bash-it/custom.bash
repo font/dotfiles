@@ -39,6 +39,9 @@ shopt -s direxpand
 
 # Functions
 function docker-remove-stale-assets() {
-  docker ps --filter status=exited -q | xargs docker rm --volumes
-  docker images --filter dangling=true -q | xargs docker rmi
+    if [[ ! $(docker ps --filter status=exited -q) == "" ]]; then
+        docker rm --volumes $(docker ps --filter status=exited -q)
+    elif [[ ! $(docker images --filter dangling=true -q) == "" ]]; then
+        docker rmi $(docker images --filter dangling=true -q)
+    fi
 }
