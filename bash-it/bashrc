@@ -85,9 +85,3 @@ if command -v minishift &>/dev/null
 then
   source <(minishift completion bash)
 fi
-
-# Enables kubectl command completion
-if command -v kubectl &>/dev/null
-then
-  source <(kubectl completion bash)
-fi
