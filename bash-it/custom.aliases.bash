@@ -7,7 +7,7 @@ alias vi='vim'
 alias cdkube='cd ~/go/src/k8s.io/kubernetes'
 
 # Kubernetes Federation
-alias cdfed='cd ~/go/src/github.com/kubernetes-sigs/federation-v2'
+alias cdfed='cd ~/go/src/sigs.k8s.io/kubefed'
 alias kf='kubefedctl'
 
 # Virsh
