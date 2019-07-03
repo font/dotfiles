@@ -18,6 +18,7 @@ let g:go_fmt_command = "goimports"
 let g:go_fmt_experimental = 1 " Preserves undo/redo buffer
 let g:go_autodetect_gopath = 1
 let g:go_list_type = "quickfix"
+let g:go_addtags_transform = "camelcase" " Use camelCase for field tags
 
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
