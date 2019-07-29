@@ -3,6 +3,9 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias vi='vim'
 
+# Notes
+alias cddoc='cd ~/Documents/tagspaces'
+
 # Kubernetes
 alias cdkube='cd ~/go/src/k8s.io/kubernetes'
 
