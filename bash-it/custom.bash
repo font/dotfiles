@@ -45,3 +45,8 @@ function docker-remove-stale-assets() {
         docker rmi $(docker images --filter dangling=true -q)
     fi
 }
+
+function create-insecure-registry() {
+  # Run insecure registry as container
+  docker run -d -p 5000:5000 --restart=always --name registry registry:2
+}
