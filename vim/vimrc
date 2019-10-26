@@ -19,11 +19,14 @@ set history=50              " keep 50 lines of command line history
 " Switch on line number display
 set number
 
-" Switch off fold column left over from vimdiff
-set foldcolumn=0
-
-" Turn off vimdiff mode
-diffoff
+" Diff settings
+"set foldcolumn=0    " Switch off fold column left over from vimdiff
+"diffoff             " Turn off vimdiff mode
+"if &diff
+"    colorscheme torte
+"endif
+"au BufEnter,BufNew * if &diff | syntax off | else | syntax on | endif
+"autocmd FileType * if &diff | setlocal syntax= | endif
 
 " Turn off scrollbind
 set noscrollbind
@@ -105,12 +108,12 @@ function! MakeViewCheck()
     endif
     return 1
 endfunction
-augroup vimrcAutoView
-    autocmd!
-    " Autosave & Load Views.
-    autocmd BufWinLeave ?* if MakeViewCheck() | mkview | endif
-    autocmd BufWinEnter ?* if MakeViewCheck() | silent loadview | endif
-augroup end
+"augroup vimrcAutoView
+"    autocmd!
+"    " Autosave & Load Views.
+"    autocmd BufWinLeave ?* if MakeViewCheck() | mkview | endif
+"    autocmd BufWinEnter ?* if MakeViewCheck() | silent loadview | endif
+"augroup end
 " Remap folding to Space
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
