@@ -19,11 +19,13 @@ let g:go_fmt_experimental = 1 " Preserves undo/redo buffer
 let g:go_autodetect_gopath = 1
 let g:go_list_type = "quickfix"
 let g:go_addtags_transform = "camelcase" " Use camelCase for field tags
+let g:go_def_mode = "guru"
 
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
+let g:go_highlight_function_parameters = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_extra_types = 1
@@ -39,6 +41,9 @@ nnoremap <C-\>d :GoCallees<cr>
 " Search functions calling this function (callers)
 nnoremap <C-\>c :GoCallers<cr>
 
+" Search functions calling this function (callers)
+nnoremap <C-\>t :GoDefType<cr>
+
 " Open :GoDeclsDir with ctrl-g
 nnoremap <C-g> :GoDeclsDir<cr>
 inoremap <C-g> <esc>:<C-u>GoDeclsDir<cr>
@@ -46,7 +51,7 @@ inoremap <C-g> <esc>:<C-u>GoDeclsDir<cr>
 " Open :GoDescribe with ctrl-s
 nnoremap <C-s> :GoDescribe<cr>
 
-" Open :GoImplements with ctrl-i
+" Open :GoImplements with ctrl-\-i
 nnoremap <C-\>i :GoImplements<cr>
 
 " Show by default 4 spaces for a tab
