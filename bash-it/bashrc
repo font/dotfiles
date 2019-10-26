@@ -65,18 +65,20 @@ if [ -f /home/${USER}/.bash_priv_rc ]; then
     source "/home/${USER}/.bash_priv_rc"
 fi
 
-# Enables shell command completion for gcloud.
-if [ -f /home/${USER}/google-cloud-sdk/completion.bash.inc ]; then
-  source "/home/${USER}/google-cloud-sdk/completion.bash.inc"
-fi
+# Google Cloud SDK
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "/home/${USER}/google-cloud-sdk/path.bash.inc" ]; then . "/home/${USER}/google-cloud-sdk/path.bash.inc"; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f "/home/${USER}/google-cloud-sdk/completion.bash.inc" ]; then . "/home/${USER}/google-cloud-sdk/completion.bash.inc"; fi
 
 # Enables AWS command completion
-if [ -f /usr/bin/aws_completer ]; then
-  complete -C "/usr/bin/aws_completer" aws
+if [ -f "/home/${USER}/.local/bin/aws_completer" ]; then
+  complete -C "/home/${USER}/.local/bin/aws_completer" aws
 fi
 
 # Enables Azure command completion
-if [ -f /home/${USER}/azure-cli/az.completion ]; then
+if [ -f "/home/${USER}/azure-cli/az.completion" ]; then
   source "/home/${USER}/azure-cli/az.completion"
 fi
 
@@ -85,3 +87,4 @@ if command -v minishift &>/dev/null
 then
   source <(minishift completion bash)
 fi
+
