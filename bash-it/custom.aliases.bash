@@ -9,9 +9,10 @@ alias cddoc='cd ~/Documents/tagspaces'
 # Kubernetes
 alias cdkube='cd ~/go/src/k8s.io/kubernetes'
 
-# Kubernetes Federation
+# Kubernetes Projects
 alias cdfed='cd ~/go/src/sigs.k8s.io/kubefed'
 alias kf='kubefedctl'
+alias cdon='cd ~/go/src/github.com/font/onprem'
 
 # Virsh
 alias virshrmvollist='for i in $(sudo virsh vol-list default 2>&1 | awk "/^ disk/ {print $2}"); do sudo virsh vol-delete $i; done'
