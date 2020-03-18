@@ -46,6 +46,14 @@ function docker-remove-stale-assets() {
     fi
 }
 
+function podman-remove-stale-assets() {
+    if [[ ! $(podman ps --filter status=exited -q) == "" ]]; then
+        podman rm --volumes $(podman ps --filter status=exited -q)
+    elif [[ ! $(podman images --filter dangling=true -q) == "" ]]; then
+        podman rmi $(podman images --filter dangling=true -q)
+    fi
+}
+
 function create-insecure-registry() {
   # Run insecure registry as container
   docker run -d -p 5000:5000 --restart=always --name registry registry:2
