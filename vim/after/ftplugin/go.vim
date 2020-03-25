@@ -9,7 +9,7 @@ set maxmempattern=2000
 " Split settings
 set splitbelow              " Horizontal windows should be split below
 
-" Write content of the file automatically to iterate more quicly when using
+" Write content of the file automatically to iterate more quickly when using
 " GoBuild
 set autowrite
 
