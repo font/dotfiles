@@ -70,21 +70,26 @@ fi
 if [ -f "/home/${USER}/google-cloud-sdk/path.bash.inc" ]; then . "/home/${USER}/google-cloud-sdk/path.bash.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f "/home/${USER}/google-cloud-sdk/completion.bash.inc" ]; then . "/home/${USER}/google-cloud-sdk/completion.bash.inc"; fi
+#if [ -f "/home/${USER}/google-cloud-sdk/completion.bash.inc" ]; then . "/home/${USER}/google-cloud-sdk/completion.bash.inc"; fi
 
 # Enables AWS command completion
-if [ -f "/home/${USER}/.local/bin/aws_completer" ]; then
-  complete -C "/home/${USER}/.local/bin/aws_completer" aws
-fi
+#if [ -f "/home/${USER}/.local/bin/aws_completer" ]; then
+#  complete -C "/home/${USER}/.local/bin/aws_completer" aws
+#fi
 
 # Enables Azure command completion
-if [ -f "/home/${USER}/azure-cli/az.completion" ]; then
-  source "/home/${USER}/azure-cli/az.completion"
-fi
+#if [ -f "/home/${USER}/azure-cli/az.completion" ]; then
+#  source "/home/${USER}/azure-cli/az.completion"
+#fi
 
 # Enables minishift command completion
-if command -v minishift &>/dev/null
-then
-  source <(minishift completion bash)
-fi
+#if command -v minishift &>/dev/null
+#then
+#  source <(minishift completion bash)
+#fi
 
+# Enables openstack command completion
+#if command -v openstack &>/dev/null
+#then
+#  source <(openstack complete --shell bash)
+#fi
