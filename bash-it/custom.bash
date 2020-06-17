@@ -17,6 +17,7 @@ bind 'set show-all-if-ambiguous on'
 
 # Environment variables
 export EDITOR='vim'
+export VISUAL='vim'
 export HISTSIZE=20000 # Size of bash history
 export HISTFILESIZE=${HISTSIZE} # Size of bash history file
 export HISTCONTROL=ignorespace:ignoredups
@@ -26,8 +27,10 @@ export VAGRANT_DEFAULT_PROVIDER=libvirt
 
 # Support for X11-clipboard and resizing panes through tmux when using Fedora
 if [ -e /usr/bin/vimx ]; then
+    alias vi='/usr/bin/vimx'
     alias vim='/usr/bin/vimx'
     export EDITOR='vimx'
+    export VISUAL='vimx'
 fi
 
 # Disable scroll lock so as to not be disturbed by ctrl-S ctrl-Q in terminals:
