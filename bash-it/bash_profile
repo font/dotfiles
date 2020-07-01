@@ -8,6 +8,9 @@ fi
 # User specific environment and startup programs
 PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
+# Set CDPATH for favorite directories to search
+CDPATH=".:~:~/go/src/k8s.io:~/go/src/github.com"
+
 # Go Environment
 if [ -d $HOME/go/bin ]; then
     PATH="$HOME/go/bin:$PATH"
@@ -18,3 +21,4 @@ if [ -f /home/${USER}/.gimme/envs/latest.env ]; then
 fi
 
 export PATH
+export CDPATH
