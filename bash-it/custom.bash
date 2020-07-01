@@ -18,7 +18,7 @@ bind 'set show-all-if-ambiguous on'
 # Environment variables
 export EDITOR='vim'
 export VISUAL='vim'
-export HISTSIZE=20000 # Size of bash history
+export HISTSIZE=-1 # Infinite bash history
 export HISTFILESIZE=${HISTSIZE} # Size of bash history file
 export HISTCONTROL=ignorespace:ignoredups
 
