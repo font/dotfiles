@@ -59,5 +59,5 @@ function podman-remove-stale-assets() {
 
 function create-insecure-registry() {
   # Run insecure registry as container
-  docker run -d -p 5000:5000 --restart=always --name registry registry:2
+  podman run -d -p 5000:5000 --restart=always --name registry registry:2
 }
