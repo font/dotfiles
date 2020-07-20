@@ -2,7 +2,7 @@
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
-alias vi='vim'
+alias vi='/usr/bin/vim'
 
 # List directory contents
 alias ll='ls -al'
