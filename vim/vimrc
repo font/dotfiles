@@ -198,7 +198,7 @@ Plug 'scrooloose/nerdtree', { 'tag': '*', 'on':  'NERDTreeToggle' }
 "Plug 'sebdah/vim-delve', { 'tag': '*' }
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go', { 'tag': 'v1.24', 'do': ':GoInstallBinaries' }
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 Plug 'fatih/gomodifytags', { 'tag': '*' }
