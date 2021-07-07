@@ -5,7 +5,7 @@
     insteadOf = https://github.com/
 [core]
     editor = vim
-    excludesfile = /home/ifont/.gitignore_global
+    excludesfile = ~/.gitignore_global
 [merge]
     tool = vimdiff
 [push]
