@@ -15,7 +15,9 @@ set autowrite
 
 " vim-go
 "let g:go_fmt_autosave = 0
-let g:go_fmt_command = "goimports"
+"let g:go_imports_autosave = 0
+"let g:go_mod_fmt_autosave = 0
+"let g:go_fmt_command = "gopls"
 "let g:go_fmt_experimental = 1 " Preserves undo/redo buffer
 let g:go_autodetect_gopath = 1
 let g:go_list_type = "quickfix"
