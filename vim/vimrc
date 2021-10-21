@@ -191,6 +191,9 @@ Plug 'easymotion/vim-easymotion', { 'tag': '*' }
 " EditorConfig Vim Plugin
 "Plug 'editorconfig/editorconfig-vim', { 'tag': '*' }
 
+" Javascript Vim Plugin
+Plug 'pangloss/vim-javascript'
+
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'tag': '*', 'on':  'NERDTreeToggle' }
 
