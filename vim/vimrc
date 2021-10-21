@@ -219,8 +219,8 @@ Plug 'tpope/vim-rhubarb'
 " Add plugins to &runtimepath
 call plug#end()
 
-"colorscheme default         " Favorite colorscheme, Necessary on Fedora
-colorscheme codedark        " VSCode Dark+ color scheme
+colorscheme default         " Favorite colorscheme, Necessary on Fedora
+"colorscheme codedark        " VSCode Dark+ color scheme
 
 "
 " NERDTreeToggle shortcut for ctrl-n
