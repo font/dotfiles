@@ -73,10 +73,14 @@ fi
 
 # Google Cloud SDK
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f "/home/${USER}/google-cloud-sdk/path.bash.inc" ]; then . "/home/${USER}/google-cloud-sdk/path.bash.inc"; fi
+if [ -f "/home/${USER}/google-cloud-sdk/path.bash.inc" ]; then
+  . "/home/${USER}/google-cloud-sdk/path.bash.inc"
+fi
 
 # The next line enables shell command completion for gcloud.
-#if [ -f "/home/${USER}/google-cloud-sdk/completion.bash.inc" ]; then . "/home/${USER}/google-cloud-sdk/completion.bash.inc"; fi
+if [ -f "/home/${USER}/google-cloud-sdk/completion.bash.inc" ]; then
+  . "/home/${USER}/google-cloud-sdk/completion.bash.inc"
+fi
 
 # Enables AWS command completion
 #if [ -f "/home/${USER}/.local/bin/aws_completer" ]; then
@@ -89,13 +93,11 @@ if [ -f "/home/${USER}/google-cloud-sdk/path.bash.inc" ]; then . "/home/${USER}/
 #fi
 
 # Enables minishift command completion
-#if command -v minishift &>/dev/null
-#then
+#if command -v minishift &>/dev/null; then
 #  source <(minishift completion bash)
 #fi
 
 # Enables openstack command completion
-#if command -v openstack &>/dev/null
-#then
+#if command -v openstack &>/dev/null; then
 #  source <(openstack complete --shell bash)
 #fi
