@@ -205,6 +205,9 @@ Plug 'fatih/vim-go', { 'tag': 'v1.25', 'do': ':GoUpdateBinaries' }
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 Plug 'fatih/gomodifytags', { 'tag': '*' }
 
+" Rust plugin
+Plug 'rust-lang/rust.vim'
+
 " VSCode Dark+ color scheme
 Plug 'tomasiser/vim-code-dark'
 
