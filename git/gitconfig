@@ -25,3 +25,5 @@
     showPatch = true
 [commit]
     verbose = true
+[init]
+	defaultBranch = main
