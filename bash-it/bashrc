@@ -26,6 +26,12 @@ fi
 
 unset rc
 
+# If not running interactively, don't do anything
+case $- in
+  *i*) ;;
+    *) return;;
+esac
+
 # Path to the bash it configuration
 export BASH_IT="/home/${USER}/.bash_it"
 
@@ -99,9 +105,6 @@ export IRC_CLIENT='irssi'
 
 # Uncomment this to make Bash-it create alias reload.
 # export BASH_IT_RELOAD_LEGACY=1
-
-# Unset system PROMPT_COMMAND
-#unset PROMPT_COMMAND
 
 # Custom version controlled scripts
 export BASH_IT_CUSTOM="/home/${USER}/.dotfiles/bash-it"
