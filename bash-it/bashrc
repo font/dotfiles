@@ -117,6 +117,22 @@ if [ -f /home/${USER}/.bash_priv_rc ]; then
     source "/home/${USER}/.bash_priv_rc"
 fi
 
+# Go Environment
+if [ -d $HOME/go/bin ]; then
+  if ! [[ "$PATH" =~ "$HOME/go/bin:" ]]; then
+    export PATH="$HOME/go/bin:$PATH"
+  fi
+fi
+if [ -f /home/${USER}/.gimme/envs/latest.env ]; then
+    source "/home/${USER}/.gimme/envs/latest.env"
+fi
+
+# Rust Environment
+# Adds cargo bin to PATH
+if [ -f "${HOME}/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
+
 # Google Cloud SDK
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "/home/${USER}/google-cloud-sdk/path.bash.inc" ]; then
@@ -147,8 +163,3 @@ fi
 #if command -v openstack &>/dev/null; then
 #  source <(openstack complete --shell bash)
 #fi
-
-# Adds cargo bin to PATH
-if [ -f "${HOME}/.cargo/env" ]; then
-  . "$HOME/.cargo/env"
-fi

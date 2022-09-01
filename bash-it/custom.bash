@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 # User specific settings
+
+# Set CDPATH for favorite directories to search
+#CDPATH=".:~:~/go/src/k8s.io:~/go/src/sigs.k8s.io:~/go/src/github.com"
+#export CDPATH
+
 if [[ -v DEMO_SESSION ]]; then
     export THEME_SHOW_CLOCK=false
     export SCM_CHECK=false

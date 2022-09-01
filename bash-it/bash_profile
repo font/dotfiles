@@ -6,24 +6,3 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # User specific environment and startup programs
-PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-
-# Set CDPATH for favorite directories to search
-CDPATH=".:~:~/go/src/k8s.io:~/go/src/sigs.k8s.io:~/go/src/github.com"
-
-# Go Environment
-if [ -d $HOME/go/bin ]; then
-    PATH="$HOME/go/bin:$PATH"
-fi
-
-if [ -f /home/${USER}/.gimme/envs/latest.env ]; then
-    source "/home/${USER}/.gimme/envs/latest.env"
-fi
-
-# Adds cargo bin to PATH
-if [ -f "${HOME}/.cargo/env" ]; then
-  . "$HOME/.cargo/env"
-fi
-
-export PATH
-export CDPATH
